@@ -10,9 +10,15 @@ function App() {
 
   const leaveAnim = (currentScreen, targetScreen) => {
     if (document.getElementById(currentScreen).classList.contains("flyIn")){
-      document.getElementById(currentScreen).classList.remove("flyIn")
+      document.getElementById(currentScreen).classList.remove("flyIn");
+    } else if (document.getElementById(currentScreen).classList.contains("flyInRev")){
+      document.getElementById(currentScreen).classList.remove("flyInRev");
     }
-    document.getElementById(currentScreen).classList.add("flyOut")
+    if (targetScreen === "titleScreen"){
+      document.getElementById(currentScreen).classList.add("flyOutRev");
+    } else {
+      document.getElementById(currentScreen).classList.add("flyOut")
+    }
     setTimeout(()=>{setCurrentScreen(targetScreen)}, 600);
     clearTimeout();
   }
