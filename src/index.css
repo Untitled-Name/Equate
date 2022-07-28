@@ -2,9 +2,6 @@ body {
   margin: 0;
   background-color: #D9EDDF;
   font-size: 16px;
-}
-
-.App {
   overflow: hidden;
 }
 
@@ -76,11 +73,11 @@ h1 {
 }
 
 .buttons.titleButtons {
-  background-color: #0063D2;
+  background-color: #5098C8;
 }
 
 .buttons.titleButtons:hover {
-  background-color: #2d8dfb;
+  background-color: #3b7296;
 }
 
 .buttonText {
@@ -89,6 +86,18 @@ h1 {
   color: white;
 }
 
+#buttonDisabler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1000;
+}
+
+.disableElem {
+  display: none;
+}
 
 /* ANIMATIONS */
 
@@ -112,13 +121,13 @@ h1 {
   10% {transform: translate(0, 10vh)}
   20% {transform: translate(0, 15vh)}
   30% {transform: translate(0, 10vh)}
-  100% {transform: translate(0, -100vh);display: none}
+  100% {transform: translate(0, -100vh)}
 }
 
 @keyframes flyIn {
   0% {transform: translate(0, 100vh)}
   90% {transform: translate(0, 1vh)}
-  100% {transform: translate(0, 0)}
+  100% {transform: translate(0, 0vh)}
 }
 
 
@@ -126,15 +135,23 @@ h1 {
 
 #difficultyScreen {
   height: 100vh;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(102,217,206,1) 100%);
   justify-content: center;
   gap: 3em;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 10%, rgba(102,217,206,1) 100%);
 }
 
 .buttons.difficultyButtons {
-  background-color: #88a5e0;
+  background-color: #8BCEFF;
 }
 
 .buttons.difficultyButtons:hover {
-  background-color: #4f7edc;
+  background-color: #72aad3;
+}
+
+
+/* SETTINGS SCREEN */
+
+#settingsScreen {
+  height: 100vh;
+  justify-content: center;
 }

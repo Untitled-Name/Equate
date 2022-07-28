@@ -2,11 +2,21 @@ import logo from './logo.svg';
 import './App.css';
 import { useState, setState } from 'react';
 import TitleScreen from './Components/TitleScreen';
-import DifficultySelect from './Components/DifficultySelect';
-import Settings from './Components/Settings';
+import DifficultyScreen from './Components/DifficultyScreen';
+import SettingsScreen from './Components/SettingsScreen';
 
 function App() {
-  const [currentScreen, setCurrentScreen] = useState("titleScreen")
+  const [currentScreen, setCurrentScreen] = useState("titleScreen");
+
+  const leaveAnim = (currentScreen, targetScreen) => {
+    if (document.getElementById(currentScreen).classList.contains("flyIn")){
+      document.getElementById(currentScreen).classList.remove("flyIn")
+    }
+    document.getElementById(currentScreen).classList.add("flyOut")
+    setTimeout(()=>{setCurrentScreen(targetScreen)}, 600);
+    clearTimeout();
+  }
+
 
   return (
     <div className="App">
@@ -17,9 +27,9 @@ function App() {
       </head>
       {
         {
-          "titleScreen": <TitleScreen onPress={screen => setCurrentScreen(screen)}/>,
-          "difficultySelect": <DifficultySelect onPress={screen => setCurrentScreen(screen)}/>,
-          "settings": <Settings onPress={screen => setCurrentScreen(screen)} />
+          "titleScreen": <TitleScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)}/>,
+          "difficultyScreen": <DifficultyScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)}/>,
+          "settingsScreen": <SettingsScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)} />
         }[currentScreen]
       }
     </div>
