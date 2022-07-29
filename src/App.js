@@ -4,11 +4,16 @@ import { useState, setState } from 'react';
 import TitleScreen from './Components/TitleScreen';
 import DifficultyScreen from './Components/DifficultyScreen';
 import SettingsScreen from './Components/SettingsScreen';
+import GameScreen from './Components/GameScreen';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState("titleScreen");
+  const [difficulty, setDifficulty] = useState("normal");
 
   const leaveAnim = (currentScreen, targetScreen) => {
+    if (currentScreen === "gameScreen"){
+      document.getElementById("gameScreen").style.background = "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(102,217,206, 1) 33%)";
+    }
     if (document.getElementById(currentScreen).classList.contains("flyIn")){
       document.getElementById(currentScreen).classList.remove("flyIn");
     } else if (document.getElementById(currentScreen).classList.contains("flyInRev")){
@@ -34,8 +39,9 @@ function App() {
       {
         {
           "titleScreen": <TitleScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)}/>,
-          "difficultyScreen": <DifficultyScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)}/>,
-          "settingsScreen": <SettingsScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)} />
+          "difficultyScreen": <DifficultyScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)} setDifficulty={setDifficulty}/>,
+          "settingsScreen": <SettingsScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)} />,
+          "gameScreen": <GameScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)} difficulty={difficulty} />
         }[currentScreen]
       }
     </div>

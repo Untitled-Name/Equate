@@ -37,13 +37,14 @@ body {
 
 /* TITLE SCREEN */
 
-.titleFlex {
+#titleScreen {
+  height: 300vh;
   justify-content: center;
-  height: 150vh;
 }
 
 .titleContainer {
-  grid-template-rows: calc(30% * 100/150) calc(70% * 100/150);
+  height: 100vh;
+  grid-template-rows: 30% 70%;
 }
 
 .titleContainerAnim {
@@ -55,7 +56,7 @@ body {
 h1 {
   font-family: 'Open Sans', sans-serif;
   font-family: 'Source Code Pro', monospace;
-  font-size: 7em;
+  font-size: 6.5em;
   box-shadow: 0px 15px 13px -19px rgba(0, 0, 0, 0.5);
 }
 
@@ -97,6 +98,7 @@ h1 {
   display: none;
 }
 
+
 /* ANIMATIONS */
 
 .flyOut {
@@ -125,40 +127,49 @@ h1 {
 }
 
 @keyframes flyOut {
-  0% {transform: translate(0, 0)}
-  10% {transform: translate(0, 10vh)}
-  20% {transform: translate(0, 15vh)}
-  30% {transform: translate(0, 10vh)}
-  100% {transform: translate(0, -100vh)}
+  0% {transform: translate(0, -100vh)}
+  10% {transform: translate(0, -90vh)}
+  20% {transform: translate(0, -85vh)}
+  30% {transform: translate(0, -90vh)}
+  100% {transform: translate(0, -200vh)}
 }
 
 @keyframes flyIn {
-  0% {transform: translate(0, 100vh)}
-  90% {transform: translate(0, -24vh)}
-  100% {transform: translate(0, -25vh)}
+  0% {transform: translate(0, 0vh)}
+  90% {transform: translate(0, -99vh)}
+  100% {transform: translate(0, -100vh)}
 }
 
 @keyframes flyInRev {
-  0% {transform: translate(0, -100vh)}
-  90% {transform: translate(0, -1vh)}
-  100% {transform: translate(0, 0vh)}
+  0% {transform: translate(0, -200vh)}
+  90% {transform: translate(0, -101vh)}
+  100% {transform: translate(0, -100vh)}
 }
 
 @keyframes flyOutRev {
-  0% {transform: translate(0, -25vh)}
-  10% {transform: translate(0, -35vh)}
-  20% {transform: translate(0, -40vh)}
-  30% {transform: translate(0, -35vh)}
+  0% {transform: translate(0, -100vh)}
+  10% {transform: translate(0, -110vh)}
+  20% {transform: translate(0, -115vh)}
+  30% {transform: translate(0, -110vh)}
   100% {transform: translate(0, 100vh)}
+}
+
+.test {
+  position: absolute;
+  height: 100vh;
+  width: 50vh;
+  top: 0vh;
+  z-index: 1000;
+  background-color: red;
 }
 
 
 /* DIFFICULTY SCREEN */
 
 #difficultyScreen {
-  height: 150vh;
+  height: 300vh;
   justify-content: center;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 16%, rgba(102,217,206,1) 84%);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 33%, rgba(102,217,206,1) 66%);
 }
 
 .difficultyContainer {
@@ -178,7 +189,17 @@ h1 {
 /* SETTINGS SCREEN */
 
 #settingsScreen {
-  height: 150vh;
+  height: 300vh;
   justify-content: center;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 16%, rgba(0,129,191,1) 84%);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 33%, rgba(0,129,191,1) 66%);
 }
+
+
+/* GAME SCREEN */
+
+#gameScreen {
+  height: 300vh;
+  justify-content: center;
+  background-color: rgb(102,217,206);
+}
+

@@ -5,9 +5,9 @@ export default function DifficultyScreen (props){
     return (
         <div id="difficultyScreen" className="flex-container column flex-center flyIn">
             <div className="difficultyContainer flex-container column flex-center">
-                <DifficultyButton difficulty={"Easy"}/>
-                <DifficultyButton difficulty={"Normal"}/>
-                <DifficultyButton difficulty={"Hard"}/>
+                <DifficultyButton difficulty={"easy"} leaveAnim={props.leaveAnim} setDifficulty={props.setDifficulty}/>
+                <DifficultyButton difficulty={"normal"} leaveAnim={props.leaveAnim} setDifficulty={props.setDifficulty}/>
+                <DifficultyButton difficulty={"hard"} leaveAnim={props.leaveAnim} setDifficulty={props.setDifficulty}/>
                 <button className="buttons titleButtons" onClick={() => {
             props.leaveAnim("difficultyScreen", "titleScreen");
             }}>
