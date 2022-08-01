@@ -2,6 +2,7 @@ import React from "react";
 import QuestionDisplay from "./QuestionDisplay";
 import Button from "./Button";
 import AnswersDisplay from "./AnswersDisplay";
+import GenerateQuestion from "./GenerateQuestion";
 
 export default function GameScreen (props) {
     const {difficulty} = props;
@@ -23,17 +24,11 @@ export default function GameScreen (props) {
 
     const getQuestionObj = (difficulty) => {
         let randVal = Math.round(Math.random() * 100) / 100;
-
-        const questionObj = {
-            question: "x<sup>2</sup> + 2 = 6",
-            correctAns: "x = 2",
-            wrongAns1: "x = 4",
-            wrongAns2: "x = -8",
-            wrongAns3: "x = -4"
-        }
-        return questionObj
+        return randVal
     }
-    const currentQuestion = getQuestionObj(difficulty);
+
+    console.log("The difficulty is:", difficulty)
+    const currentQuestion = GenerateQuestion(difficulty, 0.50);
 
     const getDifficulty = (difficulty) => {
         switch (difficulty){
