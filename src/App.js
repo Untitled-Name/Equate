@@ -5,6 +5,8 @@ import TitleScreen from './Components/TitleScreen';
 import DifficultyScreen from './Components/DifficultyScreen';
 import SettingsScreen from './Components/SettingsScreen';
 import GameScreen from './Components/GameScreen';
+import Background from './Background1.png';
+import ModeScreen from './Components/ModeScreen';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState("titleScreen");
@@ -39,8 +41,9 @@ function App() {
       {
         {
           "titleScreen": <TitleScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)}/>,
+          "modeScreen": <ModeScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)} />,
           "difficultyScreen": <DifficultyScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)} setDifficulty={setDifficulty}/>,
-          "settingsScreen": <SettingsScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)} />,
+          "settingsScreen": <SettingsScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)} background={Background}/>,
           "gameScreen": <GameScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)} difficulty={difficulty} />
         }[currentScreen]
       }

@@ -1,5 +1,6 @@
 import React from "react";
 import DifficultyButton from "./DifficultyButton";
+import Button from "./Button";
 
 export default function DifficultyScreen (props){
     return (
@@ -8,11 +9,7 @@ export default function DifficultyScreen (props){
                 <DifficultyButton difficulty={"easy"} leaveAnim={props.leaveAnim} setDifficulty={props.setDifficulty}/>
                 <DifficultyButton difficulty={"normal"} leaveAnim={props.leaveAnim} setDifficulty={props.setDifficulty}/>
                 <DifficultyButton difficulty={"hard"} leaveAnim={props.leaveAnim} setDifficulty={props.setDifficulty}/>
-                <button className="buttons titleButtons" onClick={() => {
-            props.leaveAnim("difficultyScreen", "titleScreen");
-            }}>
-                    <h2 className="buttonText">Back to title</h2>
-                </button>
+                <Button buttonText={"Back to title"} targetScreen={"titleScreen"} currentScreen={"difficultyScreen"} leaveAnim={props.leaveAnim}></Button>
             </div>
         </div>
     )

@@ -121,6 +121,11 @@ h1 {
   animation-fill-mode: forwards;
 }
 
+.inFromRight {
+  animation: inFromRight 0.6s;
+  animation-fill-mode: forwards;
+}
+
 @keyframes fadeIn {
   0% {opacity: 0}
   100% {opacity: 1}
@@ -154,6 +159,11 @@ h1 {
   100% {transform: translate(0, 100vh)}
 }
 
+@keyframes inFromRight {
+  0% {transform: translate(100vw, 0)}
+  100% {transform: translate(0, 0)}
+}
+
 .test {
   position: absolute;
   height: 100vh;
@@ -161,6 +171,21 @@ h1 {
   top: 0vh;
   z-index: 1000;
   background-color: red;
+}
+
+
+/* MODE SELECT SCREEN */
+
+#modeScreen {
+  height: 300vh;
+  justify-content: center;
+}
+
+#modeButtonsContainer {
+  flex-direction: row;
+  height: 4em;
+  width: 80vw;
+  gap: 2em;
 }
 
 
@@ -203,3 +228,39 @@ h1 {
   background-color: rgb(102,217,206);
 }
 
+#questionContainer {
+  color: white;
+  font-size: 3em;
+  margin-bottom: 1em;
+}
+
+#answersContainer {
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  gap: 1em;
+  height: 45vh;
+  width: 60vw;
+  margin-bottom: 1em;
+}
+
+.answerButton {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  cursor: pointer;
+  width: 40%;
+  height: 40%;
+  box-shadow: inset 0px 0px 7px -2px rgba(0, 0, 0, 0.50);
+  color: white;
+  font-size: 2.2em;
+  background-color: #0081BF;
+}
+
+.answerButton:hover {
+  background-color: #025d87;
+}
