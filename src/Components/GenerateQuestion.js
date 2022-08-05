@@ -21,19 +21,26 @@ export default function GenerateQuestion (difficulty, randomNum) {
         Integration         ∫ f'(x) dx                                          0       0.10    0.30
     */
     
-    
-    console.log(difficulty, "mode")
+    const assignQuestionObj = (a, b, c, d, e) => {
+        questionObj = {
+            question: a,
+            correctAns: b,
+            wrongAns1: c,
+            wrongAns2: d,
+            wrongAns3: e
+        }
+        return questionObj;
+    }
 
     switch (difficulty){
         case "easy": probRange = [0,0.3,0.6,0.9,1.0,1.0,1.0]; break;
         case "normal": probRange = [0,0.05,0.2,0.3,0.8,0.9,1.0]; break;
         case "hard": probRange = [0,0,0,0.1,0.4,0.7,1.0]; break;
+        default: alert("I don't know how, but you've broken it.");
     }
 
     for (let i = 0; i < probRange.length - 1; i++){
-        console.log(i, ":", probRange[i], probRange[i+1])
         if (randomNum >= probRange[i] && randomNum < probRange[i+1]){
-            console.log(randomNum, i)
             switch (i) {
                 case 0: questionType = "basic1"; break;
                 case 1: questionType = "basic2"; break;
@@ -41,17 +48,41 @@ export default function GenerateQuestion (difficulty, randomNum) {
                 case 3: questionType = "quadratic"; break;
                 case 4: questionType = "differentiation"; break;
                 case 5: questionType = "integration"; break;
+                default: alert("I don't know how, but you've broken it.");
             }
             break;
         }
     }
-    questionObj.question = questionType;
-    questionObj.correctAns = "a";
-    questionObj.wrongAns1 = "b";
-    questionObj.wrongAns2 = "c";
-    questionObj.wrongAns3 = "d";
 
-    console.log(questionObj)
+    const getRandom = (min, max) => {
+        return Math.floor(Math.random() *  (max - min) + min);
+    }
+
+    const genBasic1 = () => {
+        let xVal, a, b, diff1, diff2, diff3;
+        do {
+            xVal = getRandom(-16, 16);
+            a = getRandom(-20, 20);
+            diff1 = getRandom(-10, 10);
+            diff2 = getRandom(-10, 10);
+            diff3 = getRandom(-10, 10);
+        } while (
+            xVal === 0 || a === 0 || diff1 === 0 || diff2 === 0 || diff3 === 0 
+            || xVal === a || a === 1 || diff1 === diff2 || diff2 === diff3 
+            || diff3 === diff1 || diff1 === 1 || diff2 === 1 || diff3 === 1
+            || xVal + diff1 === 0 || xVal + diff2 === 0 || xVal + diff3 === 0)
+        b = xVal * a;
+
+        questionObj = assignQuestionObj(
+            `${a}x = ${b}`, 
+            `x = ${xVal}`, 
+            `x = ${xVal + diff1}`, 
+            `x = ${xVal + diff2}`, 
+            `x = ${xVal + diff3}`);
+        return questionObj
+    }
+
+    questionObj = genBasic1();
 
     return questionObj;
 }

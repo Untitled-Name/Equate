@@ -1,34 +1,29 @@
-import React from "react";
-import QuestionDisplay from "./QuestionDisplay";
+import React, { useState } from "react";
 import Button from "./Button";
-import AnswersDisplay from "./AnswersDisplay";
+import QuestionDisplay from "./QuestionDisplay";
 import GenerateQuestion from "./GenerateQuestion";
 
 export default function GameScreen (props) {
     const {difficulty} = props;
 
-    /*
-        Difficulty                                                              Easy    Medium  Hard
+    const [currentStreak, updateStreak] = useState(0);
 
-        Basic algebra                                                           0.90    0.30    0.10 (only 3)
-                            ax = b                                              0.30    0.05    0
-                            ax + c = b                                          0.30    0.15    0
-                            ax + c = b + dx                                     0.30    0.10    0.10
+    const toNextQuestion = () => {
+        document.getElementById("questionAndAnswersContainer").classList.remove("inFromRight");
+        document.getElementById("questionAndAnswersContainer").classList.add("outToLeft");
+        setTimeout(()=>{
+            document.getElementById("questionAndAnswersContainer").classList.remove("outToLeft");
+            document.getElementById("questionAndAnswersContainer").classList.add("inFromRight");
+            currentQuestion = GenerateQuestion(difficulty, getRand(difficulty));
+        }, 600);
+    }
 
-        Quadratic equation  ax^2 + bx + c = d                                   0.10    0.50    0.30
-
-        Differentiation     d/dx f(x) => f(x) = Above                           0       0.10    0.30
-        
-        Integration         ∫ f'(x) dx                                          0       0.10    0.30
-    */
-
-    const getQuestionObj = (difficulty) => {
+    const getRand = (difficulty) => {
         let randVal = Math.round(Math.random() * 100) / 100;
         return randVal
     }
 
-    console.log("The difficulty is:", difficulty)
-    const currentQuestion = GenerateQuestion(difficulty, 0.50);
+    let currentQuestion = GenerateQuestion(difficulty, getRand(difficulty));
 
     const getDifficulty = (difficulty) => {
         switch (difficulty){
@@ -40,10 +35,8 @@ export default function GameScreen (props) {
 
     return (
         <div id="gameScreen" className="flex-container column flex-center flyIn">
-            <div id="questionAndAnswersContainer" className="questionAndAnswersContainer inFromRight">
-                <QuestionDisplay questionObj={currentQuestion} />
-                <AnswersDisplay questionObj={currentQuestion}/>
-            </div>
+            <h3>Current Streak: {currentStreak}</h3>
+            <QuestionDisplay questionObj={currentQuestion} onAnswer={toNextQuestion} updateStreak={updateStreak} currentStreak={currentStreak}/>
             <Button buttonText={"Back to title"} targetScreen={"titleScreen"} currentScreen={"gameScreen"} leaveAnim={props.leaveAnim}></Button>
             <h3>{getDifficulty(difficulty)} Mode</h3>
         </div>
