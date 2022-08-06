@@ -4,6 +4,7 @@ export default function GenerateQuestion (difficulty, randomNum) {
     let questionObj = {};
     let probRange = [];
     let questionType;
+    let maxVal;
 
 
      /*
@@ -33,9 +34,9 @@ export default function GenerateQuestion (difficulty, randomNum) {
     }
 
     switch (difficulty){
-        case "easy": probRange = [0,0.3,0.6,0.9,1.0,1.0,1.0]; break;
-        case "normal": probRange = [0,0.05,0.2,0.3,0.8,0.9,1.0]; break;
-        case "hard": probRange = [0,0,0,0.1,0.4,0.7,1.0]; break;
+        case "Easy": probRange = [0,0.3,0.6,0.9,1.0,1.0,1.0]; maxVal = 12; break;
+        case "Normal": probRange = [0,0.05,0.2,0.3,0.8,0.9,1.0]; maxVal = 16; break;
+        case "Hard": probRange = [0,0,0,0.1,0.4,0.7,1.0]; maxVal = 20; break;
         default: alert("I don't know how, but you've broken it.");
     }
 
@@ -61,8 +62,8 @@ export default function GenerateQuestion (difficulty, randomNum) {
     const genBasic1 = () => {
         let xVal, a, b, diff1, diff2, diff3;
         do {
-            xVal = getRandom(-16, 16);
-            a = getRandom(-20, 20);
+            xVal = getRandom(-maxVal, maxVal);
+            a = getRandom(-maxVal, maxVal);
             diff1 = getRandom(-10, 10);
             diff2 = getRandom(-10, 10);
             diff3 = getRandom(-10, 10);

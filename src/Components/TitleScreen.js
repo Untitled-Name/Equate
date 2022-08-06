@@ -22,7 +22,7 @@ export default function TitleScreen(props){
                 <div id="buttons-container" className="buttonsContainer flex-container column flex-center">
                     <Button buttonText={"Play"} targetScreen={"modeScreen"} currentScreen={"titleScreen"} leaveAnim={props.leaveAnim}></Button>
                     <Button buttonText={"Settings"} targetScreen={"settingsScreen"} currentScreen={"titleScreen"} leaveAnim={props.leaveAnim} setDifficulty={props.setDifficulty}></Button>
-                    <Button buttonText={"Third Button"}></Button>
+                    <Button buttonText={"About"}></Button>
                 </div>
             </div>
         </div>
