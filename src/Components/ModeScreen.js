@@ -1,7 +1,9 @@
 import React from "react";
 import Button from "./Button";
+import DescriptionButton from "./DescriptionButton";
+import { useState } from "react";
 
-export default function ModeScreen (props) {
+export default function ModeScreen (props) {    
 
     const updateDescription = (mode) => {
         let descriptionDiv = document.getElementById("descriptionContainer");
@@ -24,13 +26,13 @@ export default function ModeScreen (props) {
 
     return (
         <div id="modeScreen" className="flex-container column flex-center flyIn">
-            <div id="modeButtonsContainer" className="flex-container">
-                <Button buttonText={"Lives Mode"} targetScreen={"difficultyScreen"} currentScreen={"modeScreen"} leaveAnim={props.leaveAnim} updateDescription={updateDescription} mode={"lives"} removeDescription={removeDescription} />
-                <Button buttonText={"Timed Mode"} targetScreen={"difficultyScreen"} currentScreen={"modeScreen"} leaveAnim={props.leaveAnim} updateDescription={updateDescription} mode={"timer"} removeDescription={removeDescription} />
-                <Button buttonText={"Endless Mode"} targetScreen={"difficultyScreen"} currentScreen={"modeScreen"} leaveAnim={props.leaveAnim} updateDescription={updateDescription} mode={"endless"} removeDescription={removeDescription} />
+            <div id="modeButtonsContainer" className="descriptionMenu flex-container">
+                <DescriptionButton buttonText={"Lives Mode"} targetScreen={"difficultyScreen"} currentScreen={"modeScreen"} changeScreen={props.changeScreen} updateDescription={updateDescription} mode={"lives"} removeDescription={removeDescription} setCurrentMode={props.setCurrentMode} />
+                <DescriptionButton buttonText={"Timed Mode"} targetScreen={"difficultyScreen"} currentScreen={"modeScreen"} changeScreen={props.changeScreen} updateDescription={updateDescription} mode={"timer"} removeDescription={removeDescription} setCurrentMode={props.setCurrentMode} />
+                <DescriptionButton buttonText={"Endless Mode"} targetScreen={"difficultyScreen"} currentScreen={"modeScreen"} changeScreen={props.changeScreen} updateDescription={updateDescription} mode={"endless"} removeDescription={removeDescription}  setCurrentMode={props.setCurrentMode} />
             </div>
             <div id="descriptionContainer" className="flex-container column flex-center modeDescription"></div>
-            <Button buttonText={"Back to title"} targetScreen={"titleScreen"} currentScreen={"modeScreen"} leaveAnim={props.leaveAnim}></Button>
+            <Button buttonText={"Back to title"} targetScreen={"titleScreen"} currentScreen={"modeScreen"} changeScreen={props.changeScreen}></Button>
         </div>
     )
 }

@@ -26,11 +26,17 @@ export default function GameContainer (props) {
     let currentQuestion = GenerateQuestion(difficulty, getRand(difficulty));
 
     return (
-        <div id="gameContainer" className="flex-container column flex-center inFromRight hide">
-            <h3>Current Streak: {currentStreak}</h3>
-            <QuestionDisplay questionObj={currentQuestion} onAnswer={toNextQuestion} updateStreak={updateStreak} currentStreak={currentStreak}/>
-            <Button buttonText={"Back to title"} targetScreen={"titleScreen"} currentScreen={"gameScreen"} leaveAnim={props.leaveAnim} />
-            <h3>{difficulty} Mode</h3>
+        <div id="gameAndInfoContainer" className="inFromRight hide">
+            <div id="topRightContainer">
+                <div id="livesAndTimerContainer" className=""></div>
+            </div>
+            <div id="gameContainer" className="flex-container column flex-center">
+                <h3>Current Streak: {currentStreak}</h3>
+                <QuestionDisplay questionObj={currentQuestion} onAnswer={toNextQuestion} updateStreak={updateStreak} currentStreak={currentStreak}/>
+                <Button buttonText={"Back to title"} targetScreen={"titleScreen"} currentScreen={"gameScreen"} changeScreen={props.changeScreen} />
+                <h3>{difficulty} Mode</h3>
+            </div>
         </div>
+
     )
 }

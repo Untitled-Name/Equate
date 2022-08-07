@@ -1,12 +1,19 @@
 import React from "react";
 
 export default function DifficultyButton (props){
-    const {difficulty} = props;
+    const {difficulty, changeScreen, setDifficulty, updateDescription, removeDescription} = props;
     return (
-        <button className="buttons difficultyButtons" onClick={()=>{
-            props.leaveAnim("difficultyScreen", "gameScreen");
-            props.setDifficulty(difficulty);
-            }}>
+        <button className="buttons descriptionButtons" onClick={()=>{
+            changeScreen("difficultyScreen", "gameScreen");
+            setDifficulty(difficulty);
+            }}
+            onMouseOver={()=>{
+                updateDescription(difficulty);
+            }}
+            onMouseOut={()=>{
+                removeDescription();
+            }}
+            >
             <h2 className="buttonText">{difficulty}</h2>
         </button>
     )

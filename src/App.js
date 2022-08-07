@@ -5,14 +5,19 @@ import TitleScreen from './Components/TitleScreen';
 import DifficultyScreen from './Components/DifficultyScreen';
 import SettingsScreen from './Components/SettingsScreen';
 import GameScreen from './Components/GameScreen';
-import Background from './Background1.png';
 import ModeScreen from './Components/ModeScreen';
+import Background from './assets/Background1.png';
+import Heart_Empty from './assets/heart_empty.png';
+import Heart_Full from './assets/heart_full.png';
+import Timer from './assets/timer.png';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState("titleScreen");
+  const [currentMode, setCurrentMode] = useState("");
   const [difficulty, setDifficulty] = useState("normal");
+  const [livesCount, setLivesCount] = useState(3);
 
-  const leaveAnim = (currentScreen, targetScreen) => {
+  const changeScreen = (currentScreen, targetScreen) => {
     if (currentScreen === "gameScreen"){
       document.getElementById("gameScreen").style.background = "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(102,217,206, 1) 33%)";
     }
@@ -40,11 +45,11 @@ function App() {
       </head>
       {
         {
-          "titleScreen": <TitleScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)}/>,
-          "modeScreen": <ModeScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)} />,
-          "difficultyScreen": <DifficultyScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)} setDifficulty={setDifficulty}/>,
-          "settingsScreen": <SettingsScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)} background={Background}/>,
-          "gameScreen": <GameScreen leaveAnim={(currentScreen, targetScreen) => leaveAnim(currentScreen, targetScreen)} difficulty={difficulty} />
+          "titleScreen": <TitleScreen changeScreen={(currentScreen, targetScreen) => changeScreen(currentScreen, targetScreen)}/>,
+          "modeScreen": <ModeScreen changeScreen={(currentScreen, targetScreen) => changeScreen(currentScreen, targetScreen)} setCurrentMode={setCurrentMode} />,
+          "difficultyScreen": <DifficultyScreen changeScreen={(currentScreen, targetScreen) => changeScreen(currentScreen, targetScreen)} setDifficulty={setDifficulty}/>,
+          "settingsScreen": <SettingsScreen changeScreen={(currentScreen, targetScreen) => changeScreen(currentScreen, targetScreen)} background={Background}/>,
+          "gameScreen": <GameScreen changeScreen={(currentScreen, targetScreen) => changeScreen(currentScreen, targetScreen)} difficulty={difficulty} currentMode={currentMode} livesCount={livesCount} heart_full={Heart_Full} heart_empty={Heart_Empty} timer={Timer} />
         }[currentScreen]
       }
     </div>

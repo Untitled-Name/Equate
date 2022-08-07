@@ -19,7 +19,7 @@ export default function SettingsScreen(props){
     return (
         <div id="settingsScreen" className="flex-container column flex-center flyIn">
             <button className="buttons buttonText titleButtons" onClick={()=>{setBackground()}}>Change Background</button>
-            <Button buttonText={"Back to title"} targetScreen={"titleScreen"} currentScreen={"settingsScreen"} leaveAnim={props.leaveAnim}></Button>
+            <Button buttonText={"Back to title"} targetScreen={"titleScreen"} currentScreen={"settingsScreen"} changeScreen={props.changeScreen}></Button>
         </div>
     )
 }

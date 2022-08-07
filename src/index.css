@@ -35,6 +35,13 @@ body {
   box-shadow: inset 0px 0px 7px -2px rgba(0, 0, 0, 0.50);
 }
 
+.descriptionMenu {
+  flex-direction: row;
+  height: 4rem;
+  width: 80vw;
+  gap: 2rem;
+}
+
 .hide {
   display: none;
 }
@@ -198,13 +205,6 @@ h1 {
   justify-content: center;
 }
 
-#modeButtonsContainer {
-  flex-direction: row;
-  height: 4rem;
-  width: 80vw;
-  gap: 2rem;
-}
-
 .modeDescription {
   height: 8rem;
   justify-content: center;
@@ -222,16 +222,11 @@ h1 {
   background: linear-gradient(180deg, rgba(0,0,0,0) 33%, rgba(102,217,206,1) 66%);
 }
 
-.difficultyContainer {
-  justify-content: center;
-  gap: 3rem;
-}
-
-.buttons.difficultyButtons {
+.buttons.descriptionButtons {
   background-color: #8BCEFF;
 }
 
-.buttons.difficultyButtons:hover {
+.buttons.descriptionButtons:hover {
   background-color: #72aad3;
 }
 
@@ -266,9 +261,28 @@ h1 {
   gap: 3rem;
 }
 
+#gameAndInfoContainer {
+  width: 100vw;
+}
+
+#livesSpan0 {
+  margin: 0.2rem;
+}#livesSpan1 {
+  margin: 0.2rem;
+}#livesSpan2 {
+  margin: 0.2rem;
+}
+
 #gameContainer {
   height: 100vh;
   justify-content: center;
+}
+
+#topRightContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0.5rem 0.5rem;
 }
 
 #questionContainer {
