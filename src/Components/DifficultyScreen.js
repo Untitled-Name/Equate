@@ -4,7 +4,6 @@ import Button from "./Button";
 import DescriptionButton from "./DescriptionButton";
 
 export default function DifficultyScreen (props){
-
     const updateDescription = (difficulty) => {
         let descriptionDiv = document.getElementById("descriptionContainer");
         let description;
@@ -25,7 +24,7 @@ export default function DifficultyScreen (props){
     }
 
     return (
-        <div id="difficultyScreen" className="flex-container column flex-center flyIn">
+        <div id="difficultyScreen" className={`flex-container column flex-center ${props.enterAnim}`}>
             <div className="flex-container descriptionMenu">
                 <DifficultyButton difficulty={"Easy"} changeScreen={props.changeScreen} setDifficulty={props.setDifficulty} updateDescription={updateDescription} removeDescription={removeDescription}/>
                 <DifficultyButton difficulty={"Normal"} changeScreen={props.changeScreen} setDifficulty={props.setDifficulty} updateDescription={updateDescription} removeDescription={removeDescription}/>
