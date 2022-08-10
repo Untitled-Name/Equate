@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState, setState } from 'react';
+import { useState } from 'react';
 import TitleScreen from './Components/TitleScreen';
 import DifficultyScreen from './Components/DifficultyScreen';
 import SettingsScreen from './Components/SettingsScreen';
@@ -40,12 +40,6 @@ function App() {
     }
     setTimeout(()=>{setCurrentScreen(targetScreen);}, 600);
     clearTimeout();
-  }
-
-  const altEnterAnimation = (targetScreen, fromAnim, toAnim) => {
-    let elem = document.getElementById(targetScreen).classList
-    elem.remove(fromAnim);
-    elem.add(toAnim);
   }
 
   return (

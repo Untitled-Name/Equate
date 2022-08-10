@@ -7,6 +7,7 @@ export default function AnswerButton (props){
     return (
         <button className="answerButton buttons" onClick={() => {
             props.onAnswer();
+            props.removeHeart();
             setTimeout(()=>{updateStreak(currentStreak + 1)}, 600);
             }}>
             <EquationConstructor equation={props.question}/>

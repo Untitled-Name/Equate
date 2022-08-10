@@ -19,10 +19,10 @@ export default function QuestionDisplay (props){
                 <EquationConstructor equation={questionObj["question"]}/>
             </div>
             <div id="answersContainer" className="flex-container flex-center">
-                <AnswerButton question={Object.values(questionObj)[randArr[0]]} onAnswer={props.onAnswer} updateStreak={props.updateStreak} currentStreak={props.currentStreak}/>
-                <AnswerButton question={Object.values(questionObj)[randArr[1]]} onAnswer={props.onAnswer} updateStreak={props.updateStreak} currentStreak={props.currentStreak}/>
-                <AnswerButton question={Object.values(questionObj)[randArr[2]]} onAnswer={props.onAnswer} updateStreak={props.updateStreak} currentStreak={props.currentStreak}/>
-                <AnswerButton question={Object.values(questionObj)[randArr[3]]} onAnswer={props.onAnswer} updateStreak={props.updateStreak} currentStreak={props.currentStreak}/>
+                <AnswerButton question={Object.values(questionObj)[randArr[0]]} onAnswer={props.onAnswer} updateStreak={props.updateStreak} currentStreak={props.currentStreak} removeHeart={props.removeHeart}/>
+                <AnswerButton question={Object.values(questionObj)[randArr[1]]} onAnswer={props.onAnswer} updateStreak={props.updateStreak} currentStreak={props.currentStreak} removeHeart={props.removeHeart}/>
+                <AnswerButton question={Object.values(questionObj)[randArr[2]]} onAnswer={props.onAnswer} updateStreak={props.updateStreak} currentStreak={props.currentStreak} removeHeart={props.removeHeart}/>
+                <AnswerButton question={Object.values(questionObj)[randArr[3]]} onAnswer={props.onAnswer} updateStreak={props.updateStreak} currentStreak={props.currentStreak} removeHeart={props.removeHeart}/>
             </div>
         </div>
     )
