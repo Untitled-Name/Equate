@@ -4,9 +4,7 @@ import QuestionDisplay from "./QuestionDisplay";
 import GenerateQuestion from "./GenerateQuestion";
 
 export default function GameContainer (props) {
-    const {difficulty} = props;
-
-    const [currentStreak, updateStreak] = useState(0);
+    const {difficulty, currentStreak, updateStreak} = props;
 
     const toNextQuestion = () => {
         document.getElementById("questionAndAnswersContainer").classList.remove("inFromRight");
