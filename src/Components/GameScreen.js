@@ -5,7 +5,7 @@ import GameContainer from "./GameContainer";
 
 export default function GameScreen (props) {
     const [heartCount, setHeartCount] = useState(props.livesCount);
-    const [currentStreak, updateStreak] = useState(0);
+    const [score, setScore] = useState(0);
 
     const startGame = () => {
         if (props.currentMode === "lives"){
@@ -34,6 +34,14 @@ export default function GameScreen (props) {
         }, 600);
     }
 
+    const checkAns = (answer, correctAns) => {
+        if (answer === correctAns){
+            setTimeout(()=>{setScore(score + 1)}, 600);
+        } else {
+            removeHeart();
+        }
+    }
+
     const removeHeart = () => {
         if (heartCount - 1 <= 0){
             gameOver();
@@ -51,11 +59,12 @@ export default function GameScreen (props) {
             </div>
             <div id="gameOverContainer" className="flex-container column flex-center hide">
                 <h3>Game Over!</h3>
-                <h4>Your score is {currentStreak}</h4>
+                <h4>Your score was {score}</h4>
                 <Button buttonText={"Back To Title"} targetScreen={"titleScreen"} currentScreen={"gameScreen"} changeScreen={props.changeScreen}/>
             </div>
             <div id="gameContainerContainer">
-                <GameContainer changeScreen={(currentScreen, targetScreen) => props.changeScreen(currentScreen, targetScreen)} difficulty={props.difficulty} currentMode={props.currentMode} removeHeart={removeHeart} currentStreak={currentStreak} updateStreak={updateStreak} />
+                <GameContainer changeScreen={(currentScreen, targetScreen) => props.changeScreen(currentScreen, targetScreen)} 
+                    difficulty={props.difficulty} currentMode={props.currentMode} score={score} checkAns={checkAns} />
             </div>
         </div>
     )

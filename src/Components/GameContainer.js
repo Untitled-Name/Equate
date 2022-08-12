@@ -4,7 +4,7 @@ import QuestionDisplay from "./QuestionDisplay";
 import GenerateQuestion from "./GenerateQuestion";
 
 export default function GameContainer (props) {
-    const {difficulty, currentStreak, updateStreak} = props;
+    const {difficulty, score, setScore} = props;
 
     const toNextQuestion = () => {
         document.getElementById("questionAndAnswersContainer").classList.remove("inFromRight");
@@ -29,8 +29,8 @@ export default function GameContainer (props) {
                 <div id="livesAndTimerContainer" className=""></div>
             </div>
             <div id="gameContainer" className="flex-container column flex-center">
-                <h3>Current Streak: {currentStreak}</h3>
-                <QuestionDisplay questionObj={currentQuestion} onAnswer={toNextQuestion} updateStreak={updateStreak} currentStreak={currentStreak} removeHeart={props.removeHeart}/>
+                <h3>Current Score: {score}</h3>
+                <QuestionDisplay questionObj={currentQuestion} onAnswer={toNextQuestion} checkAns={props.checkAns}/>
                 <Button buttonText={"Back to title"} targetScreen={"titleScreen"} currentScreen={"gameScreen"} changeScreen={props.changeScreen} />
                 <h3>{difficulty} Mode</h3>
             </div>
