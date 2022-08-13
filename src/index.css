@@ -147,6 +147,11 @@ h1 {
   animation-fill-mode: forwards;
 }
 
+.loseHeart {
+  animation: loseHeart 0.5s;
+  animation-fill-mode: forwards;
+}
+
 @keyframes fadeIn {
   0% {opacity: 0}
   100% {opacity: 1}
@@ -199,6 +204,16 @@ h1 {
   20% {transform: translate(10vw, 0)}
   30% {transform: translate(5vw, 0)}
   100% {transform: translate(-100vw, 0)}
+}
+
+@keyframes loseHeart {
+  0% {
+    transform: translate(0, 0) rotate(0);
+  }
+  100% {
+    transform: translate(0, 30px) rotate(90deg);
+    opacity: 0;
+  }
 }
 
 .test {
@@ -278,24 +293,38 @@ h1 {
   width: 100vw;
 }
 
-#livesSpan1 {
-  margin: 0.2rem;
-}#livesSpan2 {
-  margin: 0.2rem;
-}#livesSpan3 {
-  margin: 0.2rem;
-}
-
-#gameContainer {
-  height: 100vh;
-  justify-content: center;
-}
-
 #topRightContainer {
   position: absolute;
   top: 0;
   right: 0;
   margin: 0.5rem 0.5rem;
+}
+
+#livesAndTimerContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+}
+
+.heartContainer {
+  display: inline-block;
+}
+
+#fullHeart1 {
+  position: absolute;
+  display: inline-block;
+}#fullHeart2 {
+  position: absolute;
+  display: inline-block;
+}#fullHeart3 {
+  position: absolute;
+  display: inline-block;
+}
+
+
+#gameContainer {
+  height: 100vh;
+  justify-content: center;
 }
 
 #questionContainer {

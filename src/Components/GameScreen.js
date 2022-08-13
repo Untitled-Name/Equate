@@ -7,13 +7,29 @@ export default function GameScreen (props) {
     const [heartCount, setHeartCount] = useState(props.livesCount);
     const [score, setScore] = useState(0);
 
+    const createHeartContainer = (index) => {
+        let heartContainer = document.createElement("div");
+        heartContainer.setAttribute("className", "heartContainer");
+        heartContainer.setAttribute("id", `heartContainer${index}`);        
+        let fullHeart = document.createElement("img");
+        fullHeart.setAttribute("src", `${props.heart_full}`);
+        fullHeart.setAttribute("id", `fullHeart${index}`);
+        let emptyHeart = document.createElement("img");
+        emptyHeart.setAttribute("className", "emptyHeart");
+        emptyHeart.setAttribute("src", `${props.heart_empty}`)
+        
+        heartContainer.appendChild(fullHeart);
+        heartContainer.appendChild(emptyHeart);
+
+        return heartContainer;
+        
+    }
+
     const startGame = () => {
         if (props.currentMode === "lives"){
-            let livesInnerHTML = "";
             for (let i = 1; i <= heartCount; i++){
-                livesInnerHTML += "<span id='livesSpan" + i + "'><img src=" + props.heart_full + " /></span>"
+                document.getElementById("livesAndTimerContainer").appendChild(createHeartContainer(i));
             }
-            document.getElementById("livesAndTimerContainer").innerHTML = livesInnerHTML;
         } else if (props.currentMode === "timer"){
             document.getElementById("livesAndTimerContainer").innerHTML = "<span className='livesSpan'><img src=" + props.timer + " />30</span>"
         }
@@ -46,7 +62,7 @@ export default function GameScreen (props) {
         if (heartCount - 1 <= 0){
             gameOver();
         }
-        document.getElementById(`livesSpan${heartCount}`).innerHTML = "<img src=" + props.heart_empty + " />";
+        document.getElementById(`fullHeart${heartCount}`).classList.add("loseHeart");
         setHeartCount(heartCount - 1);
     }
 
