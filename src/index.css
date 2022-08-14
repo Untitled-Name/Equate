@@ -306,19 +306,12 @@ h1 {
   gap: 0.4rem;
 }
 
-.heartContainer {
-  display: inline-block;
-}
-
 #fullHeart1 {
   position: absolute;
-  display: inline-block;
 }#fullHeart2 {
   position: absolute;
-  display: inline-block;
 }#fullHeart3 {
   position: absolute;
-  display: inline-block;
 }
 
 

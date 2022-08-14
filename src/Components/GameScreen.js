@@ -22,7 +22,6 @@ export default function GameScreen (props) {
         heartContainer.appendChild(emptyHeart);
 
         return heartContainer;
-        
     }
 
     const startGame = () => {
