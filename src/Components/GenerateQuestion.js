@@ -12,8 +12,8 @@ export default function GenerateQuestion (difficulty, randomNum) {
 
         Basic algebra                                                           0.90    0.30    0.10 (only 3)
                             * ax = b                                              0.30    0.05    0
-                            ax + c = b                                          0.30    0.15    0
-                            ax + c = b + dx                                     0.30    0.10    0.10
+                            * ax + c = b                                          0.30    0.15    0
+                            * ax + c = b + dx                                     0.30    0.10    0.10
 
         Quadratic equation  ax^2 + bx + c = d                                   0.10    0.50    0.30
 
@@ -111,7 +111,37 @@ export default function GenerateQuestion (difficulty, randomNum) {
         return questionObj
     }
 
-    questionObj = genBasic2();
+    const genBasic3 = () => {
+        let xVal, a, b, c, d, diff1, diff2, diff3;
+        do {
+            xVal = getRandom(-maxVal, maxVal);
+            a = getRandom(-maxVal, maxVal);
+            d = getRandom(-maxVal, maxVal);
+            c = getRandom(-100, 100);
+            diff1 = getRandom(-10, 10);
+            diff2 = getRandom(-10, 10);
+            diff3 = getRandom(-10, 10);
+        } while (
+            xVal === 0 || a === 0 || diff1 === 0 || diff2 === 0 || diff3 === 0 
+            || xVal === a || a === 1 || diff1 === diff2 || diff2 === diff3 
+            || diff3 === diff1 || diff1 === 1 || diff2 === 1 || diff3 === 1
+            || xVal + diff1 === 0 || xVal + diff2 === 0 || xVal + diff3 === 0
+            || c === 0)
+        b = xVal * a + c - xVal * d;
+        let signC, signD;
+        if (c > 0){signC = "+"}else{signC = "-";c = c * -1}
+        if (d > 0){signD = "+"}else{signD = "-";d = d * -1}
+
+        questionObj = assignQuestionObj(
+            `${a}x ${signC} ${c} = ${b} ${signD} ${d}x`, 
+            `x = ${xVal}`, 
+            `x = ${xVal + diff1}`, 
+            `x = ${xVal + diff2}`, 
+            `x = ${xVal + diff3}`);
+        return questionObj
+    }
+
+    questionObj = genBasic3();
 
     return questionObj;
 }
