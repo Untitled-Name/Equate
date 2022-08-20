@@ -141,7 +141,38 @@ export default function GenerateQuestion (difficulty, randomNum) {
         return questionObj
     }
 
-    questionObj = genBasic3();
+    const quadratic = () => {
+        let xRoot1, xRoot2, diff1A, diff2A, diff3A, diff1B, diff2B, diff3B;
+        do {
+            xRoot1 = getRandom(-12, 12);
+            xRoot2 = getRandom(-12, 12);
+            diff1A = getRandom(-10, 10);
+            diff1B = getRandom(-10, 10);
+            diff2A = getRandom(-10, 10);
+            diff2B = getRandom(-10, 10);
+            diff3A = getRandom(-10, 10);
+            diff3B = getRandom(-10, 10);
+        } while (
+        xRoot1 === 0 || xRoot2 === 0 || diff1A === 0 || diff2A === 0 || diff3A === 0
+        || diff1B === 0 || diff2B === 0 || diff3B === 0 || diff1A + diff1B === diff2A + diff2B 
+        || diff2A + diff2B === diff3A + diff3B || diff1A + diff1B === diff3A + diff3B)
+
+        let b = xRoot1 + xRoot2;
+        let c = xRoot1 * xRoot2;
+        let signB, signC;
+        if (b > 0){signB = "+"}else{signB = "-";b = b * -1}
+        if (c > 0){signC = "+"}else{signC = "-";c = c * -1}
+
+        questionObj = assignQuestionObj(
+            `x<sup>2</sup> ${signB} ${b}x ${signC} ${c} = 0`, 
+            `${xRoot1}, ${xRoot2}`, 
+            `${xRoot1 + diff1A}, ${xRoot2 + diff1B}`, 
+            `${xRoot1 + diff2A}, ${xRoot2 + diff2B}`, 
+            `${xRoot1 + diff3A}, ${xRoot2 + diff3B}`);
+        return questionObj
+    }
+
+    questionObj = quadratic();
 
     return questionObj;
 }
